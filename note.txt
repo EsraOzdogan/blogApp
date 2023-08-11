@@ -20,3 +20,33 @@ app.use(function(req,res){
     //res.end();
     res.send("<h1>homepage</h1>")
 });
+
+
+
+
+--ROUTING
+
+app.use(function(req,res,next){    
+    if(req.url =="/" && req.method== "GET"){}   //routing
+});
+
+
+//use methodu özellestirilmis
+
+app.use("/",function(req,res,next){    
+    res.send("homepage")  
+});
+
+
+----
+app.use("/blogs/5",function(req,res){    //en ozel route en yukarda
+    res.send("detail of blog 5")  
+});
+
+app.use("/blogs",function(req,res){    
+    res.send("blogs list")  
+});
+
+app.use("/",function(req,res){    
+    res.send("homepage")  
+});
