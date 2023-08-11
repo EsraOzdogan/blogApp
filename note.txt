@@ -1,3 +1,22 @@
 npm i express@4.18.1
 
 npm i nodemon@2.0.19 --save-dev  --> nodemon kütüphanesi, otomatik kaydetme icin. --save-dev -->package.jsonda dev-dependencies eklemek icin
+
+
+--MIDDLEWARE
+
+app.use(function(req,res,next){       
+    console.log("middleware 1")
+    next();  //süreci devam ettir
+});
+
+app.use(function(req,res,next){          
+    console.log("middleware 2") 
+    next();
+});
+
+app.use(function(req,res){          
+    console.log("middleware 3") 
+    //res.end();
+    res.send("<h1>homepage</h1>")
+});
