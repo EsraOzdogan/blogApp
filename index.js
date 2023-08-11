@@ -2,18 +2,26 @@ const express = require("express");
 
 const app = express();
 
-app.use("/blogs/:blogid/users/:username",function(req,res){    //en ozel route en yukarda
-    console.log(req.params.blogid)
-    console.log(req.params.username)
-    res.send("detail of blog")  
+const path = require("path");
+
+app.use("/blogs/:blogid",function(req,res){   
+     //res.sendFile("/views/users/details.html")
+    console.log(__dirname)         //dirname mevcut klasörü gösterir
+    console.log(__filename)        //dirname mevcut dosyayı gösterir
+
+    //C://blogapp/views/user/details.htmlolmasi icin
+    res.sendFile(path.join(__dirname, "views/users","blog-details.html"))
+   
 });
 
 app.use("/blogs",function(req,res){    
-    res.send("blogs list")  
+    res.sendFile(path.join(__dirname, "views/users","blogs.html"))
+
 });
 
 app.use("/",function(req,res){    
-    res.send("homepage")  
+    res.sendFile(path.join(__dirname, "views/users","index.html"))
+
 });
 
 app.listen(3000, function(){
