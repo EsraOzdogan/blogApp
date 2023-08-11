@@ -50,3 +50,20 @@ app.use("/blogs",function(req,res){
 app.use("/",function(req,res){    
     res.send("homepage")  
 });
+
+
+
+//BOOTSTRAP
+npm i bootstrap@5.2.0
+
+
+http://expressjs.com/en/starter/static-files.html -->add app.use(express.static('public'))  for static files
+
+app.use("/libs",express.static('node_modules'));
+ya da 
+app.use("/libs",express.static(path.join(__dirname,'node_modules')));
+
+<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+app.use(express.static('node_modules'));
+
+

@@ -12,6 +12,8 @@ npm i express@4.18.1
 
 npm i nodemon@2.0.19 --save-dev //gelistirme de yardimci
 
+npm i bootstrap@5.2.0
+
 ## RUN
 
 n̶o̶d̶e̶ ̶i̶n̶d̶e̶x̶.̶j̶s̶
