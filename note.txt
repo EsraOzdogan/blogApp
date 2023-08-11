@@ -1,0 +1,3 @@
+npm i express@4.18.1
+
+npm i nodemon@2.0.19 --save-dev  --> nodemon kütüphanesi, otomatik kaydetme icin. --save-dev -->package.jsonda dev-dependencies eklemek icin
