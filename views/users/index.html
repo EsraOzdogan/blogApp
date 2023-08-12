@@ -7,7 +7,87 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>homepage</h1>
-    <img src="/static/images/avatar.png" alt="" />
+    <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+      <div class="container">
+        <a href="/" class="navbar-brand">BlogApp</a>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a href="/blogs" class="nav-link">Blog List</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="list-group">
+            <a href="" class="list-group-item list-group-action active"
+              >Web Development</a
+            >
+            <a href="" class="list-group-item list-group-action"
+              >Mobile Application</a
+            >
+            <a href="" class="list-group-item list-group-action"
+              >Data Analysis</a
+            >
+            <a href="" class="list-group-item list-group-action">Programming</a>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <h1 class="h3 mb-3">Homepage</h1>
+          <div class="card mb-3">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="/static/images/1.jpg" class="img-fluid" alt="" />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Applied web development</h5>
+                  <p class="card-text">
+                    'Web Development': Html, Css, Sass, Flexbox, Bootstrap,
+                    Javascript, Angular, JQuery, Asp.Net Mvc&Core Mvc
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-3">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="/static/images/2.jpg" class="img-fluid" alt="" />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Python Programming</h5>
+                  <p class="card-text">
+                    Python Tutorials. Database, Data Analysis, Bot Writing, Web
+                    Development(Django)
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-3">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="/static/images/3.jpg" class="img-fluid" alt="" />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Javascript Programming</h5>
+                  <p class="card-text">
+                    Nodejs, Angular, React and VueJs with modern javascript
+                    tutorials (ES6 & ES7+).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
