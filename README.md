@@ -14,7 +14,9 @@ npm i nodemon@2.0.19 --save-dev //gelistirme de yardimci
 
 npm i bootstrap@5.2.0
 
-## RUN
+npm i ejs@3.1.8
+
+## RUNSS
 
 n̶o̶d̶e̶ ̶i̶n̶d̶e̶x̶.̶j̶s̶
 
