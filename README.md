@@ -18,7 +18,7 @@ npm i ejs@3.1.8
 
 EJS language support //Extension
 
-## RUNSS
+## RUN
 
 n̶o̶d̶e̶ ̶i̶n̶d̶e̶x̶.̶j̶s̶
 
