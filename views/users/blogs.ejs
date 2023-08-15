@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css" />
-    <title>Document</title>
+    <title><%= title %> -- Blogapp</title>
   </head>
   <body>
     <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
@@ -22,88 +22,45 @@
       <div class="row">
         <div class="col-md-3">
           <div class="list-group">
-            <a href="" class="list-group-item list-group-action active"
-              >Web Development</a
+            <!-- <% for( let i = 0; i < categories.length; i++ ) { %>
+            <a href="" class="list-group-item list-group-action">
+              <%= categories[i] %></a
             >
-            <a href="" class="list-group-item list-group-action"
-              >Mobile Application</a
+            <% } %> -->
+
+            <% categories.forEach(function (category) { %>
+            <a href="" class="list-group-item list-group-action">
+              <%= category %></a
             >
-            <a href="" class="list-group-item list-group-action"
-              >Data Analysis</a
-            >
-            <a href="" class="list-group-item list-group-action">Programming</a>
+            <% }) %>
           </div>
         </div>
         <div class="col-md-9">
-          <h1 class="h3 mb-3">Blog List</h1>
-          <div class="card mb-3">
-            <div class="row">
-              <div class="col-md-4">
-                <img src="/static/images/1.jpg" class="img-fluid" alt="" />
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Applied web development</h5>
-                  <p class="card-text">
-                    'Web Development': Html, Css, Sass, Flexbox, Bootstrap,
-                    Javascript, Angular, JQuery, Asp.Net Mvc&Core Mvc
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <h1 class="h3 mb-3"><%= title %></h1>
 
+          <% blogs.forEach(blog => { %>
+          <!-- ejseach-->
           <div class="card mb-3">
             <div class="row">
               <div class="col-md-4">
-                <img src="/static/images/2.jpg" class="img-fluid" alt="" />
+                <!-- ejsout-->
+                <img
+                  src="/static/images/<%= blog.img %>"
+                  class="img-fluid"
+                  alt=""
+                />
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">Python Programming</h5>
-                  <p class="card-text">
-                    Python Tutorials. Database, Data Analysis, Bot Writing, Web
-                    Development(Django)
-                  </p>
+                  <h5 class="card-title"><%= blog.title %></h5>
+                  <!-- ejsout-->
+                  <p class="card-text"><%= blog.description %></p>
+                  <!-- ejsout-->
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="card mb-3">
-            <div class="row">
-              <div class="col-md-4">
-                <img src="/static/images/3.jpg" class="img-fluid" alt="" />
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Javascript Programming</h5>
-                  <p class="card-text">
-                    Nodejs, Angular, React and VueJs with modern javascript
-                    tutorials (ES6 & ES7+).
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card mb-3">
-            <div class="row">
-              <div class="col-md-4">
-                <img src="/static/images/4.jpg" class="img-fluid" alt="" />
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">React Programming</h5>
-                  <p class="card-text">
-                    Learn React, the most popular frontend library, with
-                    hands-on projects from start to finish. Hooks, Redux,
-                    Webpack, Firebase and More.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <% }) %>
 
           <!--pagination-->
 
