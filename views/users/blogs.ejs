@@ -1,22 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css" />
-    <title><%= title %> -- Blogapp</title>
+    <%- include('../partials/head') %>
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
-      <div class="container">
-        <a href="/" class="navbar-brand">BlogApp</a>
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a href="/blogs" class="nav-link">Blog List</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <!--ejsinc-->
+    <%- include('../partials/nav') %>
 
     <div class="container mt-3">
       <div class="row">
@@ -64,28 +53,8 @@
 
           <!--pagination-->
 
-          <% if (blogs.filter(b => b.isApproved).length>3) { %>
-
-          <nav>
-            <ul class="pagination justify-content-center">
-              <li class="page-item">
-                <a href="" class="page-link">Back</a>
-              </li>
-              <li class="page-item active">
-                <a href="" class="page-link">1</a>
-              </li>
-              <li class="page-item">
-                <a href="" class="page-link">2</a>
-              </li>
-              <li class="page-item">
-                <a href="" class="page-link">3</a>
-              </li>
-              <li class="page-item">
-                <a href="" class="page-link">Next</a>
-              </li>
-            </ul>
-          </nav>
-          <% } %>
+          <% if (blogs.filter(b => b.isApproved).length>2) { %> <%-
+          include('../partials/pagination') %> <% } %>
         </div>
       </div>
     </div>
