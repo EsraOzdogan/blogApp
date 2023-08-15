@@ -142,3 +142,20 @@ for icin : ejsfor + enter
             <% }) %>
 
 
+--EJSINC
+
+--tek parametre gönderme
+
+ <%- include('../partials/blog-card',blog) %> 
+
+
+
+--birden fazla veri gönderme
+
+<%-
+          include('../partials/blog-card',{blog,selectedCategory, ...}) %>
+
+
+
+<%-
+          include('../partials/blog-card',{blog : b ,selectedCategory: category}) %>
