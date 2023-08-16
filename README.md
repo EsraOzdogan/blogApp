@@ -26,7 +26,7 @@ n̶o̶d̶e̶ ̶i̶n̶d̶e̶x̶.̶j̶s̶
 
 npm start
 
-##DATABASE
+## DATABASE
 
 Create Table
 
