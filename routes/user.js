@@ -13,7 +13,7 @@ const data = {
    title: "Applied Web development",
    description : "'Web Development': Html, Css, Sass, Flexbox, Bootstrap, Javascript, Angular, JQuery, Asp.Net Mvc&Core Mvc",
    img: "1.jpg",
-   homepage: true,
+   isHomepage: true,
    isApproved : true,
    },
    {
@@ -21,7 +21,7 @@ const data = {
    title: "Python Programming",
    description : "Python Tutorials. Database, Data Analysis, Bot Writing, Web Development(Django)",
    img: "2.jpg",
-   homepage: true,
+   isHomepage: true,
    isApproved : false,
    },
    {
@@ -29,7 +29,7 @@ const data = {
    title: "Javascript Programming",
    description : "Nodejs, Angular, React and VueJs with modern javascript tutorials (ES6 & ES7+).",
    img: "3.jpg",
-   homepage: false,
+   isHomepage: false,
    isApproved : true,
    },
    ]
@@ -40,7 +40,7 @@ router.use("/blogs/:blogid",function(req,res){
 });
 
 router.use("/blogs",function(req,res){    
-   db.execute("select * from blog")
+   db.execute("select * from blog where isApproved = 1 ")
       .then(result => {
          res.render("users/blogs", {
             title: "All Courses",
@@ -52,7 +52,7 @@ router.use("/blogs",function(req,res){
 });
 
 router.use("/",function(req,res){ 
-   db.execute("select * from blog")
+   db.execute("select * from blog where isApproved = 1 and isHomepage=1")
       .then(result => {
          console.log(result[0])
          res.render("users/index", {
