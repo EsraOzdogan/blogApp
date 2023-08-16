@@ -168,3 +168,48 @@ DATABASE
 Not Null-> o deger olmadan o veri kaydolmasın
 
 AI --> otomatik primary key arttirma
+
+
+
+MYSQL KURULUMU
+
+npm i mysql2@2.3.3
+
+
+//index.js
+
+const mysql = require("mysql2");
+const config = require("./config");
+
+let connection = mysql.createConnection(config.db);
+
+connection.connect(function(err){
+    if(err){
+        return console.log(err);
+    }
+
+    connection.query("select * from blog", function(err, result){
+        console.log(result);
+        console.log(result[0]);
+        console.log(result[0].title);
+    });
+
+    console.log("connected to mysql");
+});
+
+
+
+
+//config.js 
+
+const config = {
+    db: {
+        host: "localhost",      //ip adresi
+        user: "root",
+        password: "Esra.123",
+        database: "blogapp"
+    },
+    //key: ""
+}
+
+module.exports = config;

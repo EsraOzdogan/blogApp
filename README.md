@@ -18,6 +18,8 @@ npm i ejs@3.1.8
 
 EJS language support //Extension
 
+npm i mysql2@2.3.3
+
 ## RUN
 
 n̶o̶d̶e̶ ̶i̶n̶d̶e̶x̶.̶j̶s̶
