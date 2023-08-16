@@ -159,3 +159,12 @@ for icin : ejsfor + enter
 
 <%-
           include('../partials/blog-card',{blog : b ,selectedCategory: category}) %>
+
+
+
+
+DATABASE
+
+Not Null-> o deger olmadan o veri kaydolmasın
+
+AI --> otomatik primary key arttirma
