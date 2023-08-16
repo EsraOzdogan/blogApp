@@ -4,26 +4,6 @@ const app = express();
 
 app.set("view engine", "ejs");
 
-const mysql = require("mysql2");
-const config = require("./config");
-
-let connection = mysql.createConnection(config.db);
-
-connection.connect(function(err){
-    if(err){
-        return console.log(err);
-    }
-
-    connection.query("select * from blog", function(err, result){
-        console.log(result);
-        console.log(result[0]);
-        console.log(result[0].title);
-    });
-
-    console.log("connected to mysql");
-});
-
-
 const path = require("path");
 const userRoutes = require("./routes/user");   //middleware
 const adminRoutes = require("./routes/admin");
