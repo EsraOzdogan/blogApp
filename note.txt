@@ -68,7 +68,7 @@ app.use(express.static('node_modules'));
 
 
 
-app.use("/blogs/:blogid",function(req,res){   
+app.use("/blogs/:blogId",function(req,res){   
     //res.sendFile("/views/users/details.html")
    console.log(__dirname)         //dirname mevcut klasörü gösterir
    console.log(__filename)        //dirname mevcut dosyayı gösterir
@@ -265,3 +265,12 @@ Await sonrasi;
 
 
    NOT: then bloklarini sorgudan dönenler icin kullaniyoruz. İcice yapiypruz. Problem bir islem bitip daha sonras digerinin baslamasiydi. await ile bir satir biip sonra alt satira geciyor sorun cözülüyor
+
+
+   Blog details 
+
+tek parametre
+    const [blog, ] = await db.execute("select* from blog where blogId=?", [id])
+
+    coklu parametre
+     const [blog, ] = await db.execute("select* from blog where blogId=? and isHomepage=?", [id, ...])

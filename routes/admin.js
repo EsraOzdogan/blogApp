@@ -5,7 +5,7 @@ router.use("/blog/create",function(req,res){
    res.render( "admin/blog-create");
 });
 
-router.use("/blogs/:blogid",function(req,res){    
+router.use("/blogs/:blogId",function(req,res){    
     res.render( "admin/blog-edit");
  });
 
