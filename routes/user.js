@@ -8,40 +8,38 @@ router.use("/blogs/:blogid",function(req,res){
    res.render( "users/blog-details");
 });
 
-router.use("/blogs",function(req,res){    
-   db.execute("select * from blog where isApproved = 1 ")
-   .then(blogResult => {
-      db.execute("select * from category")
-      .then(categoryResult => {
-         res.render("users/index", {
-            title: "All Courses",
-            blogs: blogResult[0],
-            categories: categoryResult[0]
-         });
-      })
-      .catch(err => console.log(err))
-   })
-   .catch(err => console.log(err));
+router.use("/blogs",async function(req,res){    
+   try{
+      const [blogs,] = await db.execute("select * from blog where isApproved = 1 ");
+      console.log(blogs);
+      const [categories, ] = await db.execute("select * from category");
+
+      res.render("users/index", {
+         title: "All Courses",
+         blogs: blogs,
+         categories: categories
+      });
+   }
+   catch(err){
+      console.log(err);
+   }
 });
 
-router.use("/",function(req,res){ 
-   db.execute("select * from blog where isApproved = 1 and isHomepage=1")
-      .then(blogResult => {
-         //console.log(blogResults[0])
+router.use("/", async function(req,res){ 
+   try{
+      const [blogs,] = await db.execute("select * from blog where isApproved = 1 and isHomepage=1");
+      console.log(blogs);
+      const [categories, ] = await db.execute("select * from category");
 
-         db.execute("select * from category")
-         .then(categoryResult => {
-            console.log(categoryResult[0])
-
-            res.render("users/index", {
-               title: "Popular Courses",
-               blogs: blogResult[0],
-               categories: categoryResult[0]
-            });
-         })
-         .catch(err => console.log(err))
-      })
-      .catch(err => console.log(err));
+      res.render("users/index", {
+         title: "Popular Courses",
+         blogs: blogs,
+         categories: categories
+      });
+   }
+   catch(err){
+      console.log(err);
+   }
 });
 
 module.exports = router;

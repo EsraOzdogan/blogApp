@@ -213,3 +213,55 @@ const config = {
 }
 
 module.exports = config;
+
+
+--ASYNC-AWAIT öncesi
+
+
+ db.execute("select * from blog where isApproved = 1 ")
+   .then(blogResult => {
+      db.execute("select * from category")
+      .then(categoryResult => {
+         res.render("users/index", {
+            title: "All Courses",
+            blogs: blogResult[0],
+            categories: categoryResult[0]
+         });
+      })
+      .catch(err => console.log(err))
+   })
+   .catch(err => console.log(err));
+
+
+--ASYNC-AWAIT sonrasi
+
+const blogs = await db.execute("select * from blog where isApproved = 1 ")           //db promise döndürecek, await ile bekletiyoruz yani işlem bittginden emin olup alt satira gecicez
+console.log(blogs[0])
+
+üstteki ve alttaki aynı 0.index aliyor
+
+
+const [blogs, ] = await db.execute("select * from blog where isApproved = 1 ")
+console.log(blogs)
+
+
+Await sonrasi;
+
+  try{
+      const [blogs,] = await db.execute("select * from blog where isApproved = 1 ");
+      console.log(blogs);
+      const [categories, ] = await db.execute("select * from category");
+
+      res.render("users/index", {
+         title: "All Courses",
+         blogs: blogs,
+         categories: categories
+      });
+   }
+   catch(err){
+      console.log(err);
+   }
+
+
+
+   NOT: then bloklarini sorgudan dönenler icin kullaniyoruz. İcice yapiypruz. Problem bir islem bitip daha sonras digerinin baslamasiydi. await ile bir satir biip sonra alt satira geciyor sorun cözülüyor
