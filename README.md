@@ -30,6 +30,8 @@ npm start
 
 ## DATABASE
 
+BLOG
+
 Create Table
 
 ![Alt text](./public/images//db-images/image.png)
@@ -43,3 +45,23 @@ Insert Data
 ![Alt text](./public/images//db-images/image-3.png)
 
 ![Alt text](./public/images//db-images/image-4.png)
+
+CATEGORY
+
+Create Table
+
+![Alt text](./public/images//db-images/image-5.png)
+
+Insert Data
+
+![Alt text](./public/images//db-images/image-6.png)
+
+![Alt text](./public/images//db-images/image-7.png)
+
+![Alt text](./public/images//db-images/image-8.png)
+
+![Alt text](./public/images//db-images/image-9.png)
+
+![Alt text](./public/images//db-images/image-10.png)
+
+![Alt text](./public/images//db-images/image-11.png)
