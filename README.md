@@ -65,3 +65,12 @@ Insert Data
 ![Alt text](./public/images//db-images/image-10.png)
 
 ![Alt text](./public/images//db-images/image-11.png)
+
+Alter Table
+
+Add categoryId
+![Alt text](./public/images//db-images/image-12.png)
+
+![Alt text](./public/images//db-images/image-13.png)
+
+![Alt text](./public/images//db-images/image-14.png)

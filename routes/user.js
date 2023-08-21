@@ -3,8 +3,27 @@ const router = express.Router();
 
 const db = require("../data/db");
 
+router.use("/blogs/category/:categoryId",async function(req,res){          //sira önemli en yukarıda olmali
+   const id = req.params.categoryId;
 
-router.use("/blogs/:blogId",async function(req,res){   
+   try{
+      const [blogs, ] = await db.execute("select* from blog where categoryId=?", [id]);
+      const [categories, ] = await db.execute("select * from category");
+
+      res.render("users/blogs", {         //blog.ejs gönderilir
+         title: "All Courses",
+         blogs: blogs,
+         categories: categories
+      });
+        
+   }catch(err){
+      console.log(err)
+   }
+
+
+ })
+
+router.use("/blogs/:blogId",async function(req,res){      //blogs/category de karsilar 
    const id = req.params.blogId
    //console.log(id)
 
