@@ -2,7 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 router.use("/blog/create",function(req,res){   
-   res.render( "admin/blog-create");
+   res.render( "admin/blog-create", { title: 'add blog'});
+
+   
+
 });
 
 router.use("/blogs/:blogId",function(req,res){    
