@@ -9,12 +9,14 @@ router.use("/blogs/:blogId",async function(req,res){
    //console.log(id)
 
    try{
-      const [blog, ] = await db.execute("select* from blog where blogId=?", [id]);
+      const [blogs, ] = await db.execute("select* from blog where blogId=?", [id]);
 
-      if(blog[0]){                     //urlden blogs/8 denilince dbde olmadıgi icin kontrol eklendi ve dbde yoksa yani öyle bir blog ve detayi yoksa redirect ile anasayfaya yönlendirildi
+      const blog = blogs[0];
+
+      if(blog){                     //urlden blogs/8 denilince dbde olmadıgi icin kontrol eklendi ve dbde yoksa yani öyle bir blog ve detayi yoksa redirect ile anasayfaya yönlendirildi
          return res.render( "users/blog-details", {
-            title: blog[0].title,
-            blog : blog[0]
+            title: blog.title,
+            blog : blog
          });
       }
       res.redirect("/")
