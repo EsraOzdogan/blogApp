@@ -13,14 +13,13 @@ router.use("/blogs/category/:categoryId",async function(req,res){          //sir
       res.render("users/blogs", {         //blog.ejs gönderilir
          title: "All Courses",
          blogs: blogs,
-         categories: categories
+         categories: categories,
+         selectedCategory: id
       });
         
    }catch(err){
       console.log(err)
    }
-
-
  })
 
 router.use("/blogs/:blogId",async function(req,res){      //blogs/category de karsilar 
@@ -55,7 +54,8 @@ router.use("/blogs",async function(req,res){
       res.render("users/index", {
          title: "All Courses",
          blogs: blogs,
-         categories: categories
+         categories: categories,
+         selectedCategory: null
       });
    }
    catch(err){
@@ -71,7 +71,8 @@ router.use("/", async function(req,res){
       res.render("users/index", {
          title: "Popular Courses",
          blogs: blogs,
-         categories: categories
+         categories: categories,
+         selectedCategory: null
       });
    }
    catch(err){
