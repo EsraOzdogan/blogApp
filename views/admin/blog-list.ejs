@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=Admin blog list, initial-scale=1.0" />
-    <title>Document</title>
+    <%- include('../partials/head') %>
   </head>
   <body>
-    Admin blog list
+    <!--ejsinc-->
+    <%- include('../partials/nav') %>
+
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width: 50px">Id</th>
+                <th style="width: 150px">Image</th>
+                <th>Title</th>
+                <th style="width: 130px"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% blogs.forEach(blog => { %>
+              <tr>
+                <td><%= blog.blogId %></td>
+                <td>
+                  <img
+                    src="/static/images/<%= blog.img %>"
+                    alt=""
+                    class="img-fluid"
+                  />
+                </td>
+                <td><%= blog.title %></td>
+                <td>
+                  <!--   index.jsde /admin oldugu icin /admin koyuyoruz adin.js routedaki url'e ek olarak-->
+
+                  <a
+                    class="btn btn-sm btn-primary"
+                    href="/admin/blogs/<%= blog.blogId %>"
+                  >
+                    edit</a
+                  >
+                  <a
+                    class="btn btn-sm btn-danger"
+                    href="/admin/blogs/<%= blog.blogId %>"
+                  >
+                    delete</a
+                  >
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

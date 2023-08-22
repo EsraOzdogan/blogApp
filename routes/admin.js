@@ -29,20 +29,26 @@ router.post("/blog/create",async function(req,res){
    try{
       await db.execute("INSERT INTO blog(title, description, img, isHomepage, isApproved, categoryId) VALUES (?,?,?,?,?,?)",          //db veri ekleme //sıra önemli ve dbdeki columnlar ile aynı olmali
       [title, description, img, isHomepage, isApproved, category]);
-      res.redirect("/")
+      res.redirect("/admin/blogs")
    }catch(err){
       console.log(err);
    }
-   
-
 });
 
 router.get("/blogs/:blogId",function(req,res){    
     res.render( "admin/blog-edit");
  });
 
-router.get("/blogs",function(req,res){    
-   res.render( "admin/blog-list");
+router.get("/blogs",async function(req,res){    
+   try{
+      const [blogs,] = await db.execute("select blogId, title, img from blog");        //sadece bu kolonlari gönderiyorum
+      res.render("admin/blog-list", {
+         title: "blog list",
+         blogs: blogs
+      })
+   }catch(err){
+      console.log(err);
+   }
 });
 
 module.exports = router;
