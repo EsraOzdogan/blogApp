@@ -10,6 +10,8 @@
       <div class="row">
         <div class="col-md-12 mt-3">
           <form action="" method="post">
+            <input type="hidden" name="blogId" value="<%= blog.blogId %>" />
+            <!-- bu input hidden ile namede yakalanan blogId ile uppdate yapilir. html ve admin.js posttaki blogIdler eslesince degistirme yapiyor-->
             <div class="row mb-3">
               <label for="title" class="col-sm-2 col-form-label">Title</label>
               <div class="col-sm-8">

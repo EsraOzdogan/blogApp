@@ -58,6 +58,24 @@ router.get("/blogs/:blogId",async function(req,res){
    }
  });
 
+ router.post("/blogs/:blogId",async function(req,res){    
+   const blogId = req.body.blogId;
+   const title = req.body.title;
+   const description = req.body.description;
+   const img = req.body.img;
+   const categoryId = req.body.category;
+   const isHomepage = req.body.homepage == "on" ? 1:0;
+   const isApproved = req.body.approval == "on" ? 1:0;
+
+   try{
+      await db.execute("UPDATE blog SET title =?, description=?, img=?, isHomepage=?, isApproved=?, categoryId=? WHERE blogId=?",   //blog tablosunda sıralanan columnlari güncelle, hepsini güncelemek zorunda degilsins
+      [title, description, img, isHomepage, isApproved, categoryId, blogId]);
+      res.redirect("/admin/blogs")
+   }catch(err){
+      console.log(err);
+   }
+ });
+
 router.get("/blogs",async function(req,res){    
    try{
       const [blogs,] = await db.execute("select blogId, title, img from blog");        //sadece bu kolonlari gönderiyorum
