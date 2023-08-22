@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-12 mt-3 text-center">
+          <div class="alert alert-secondary">
+            <p class="mb-3">Do you want to delete <%= blog.title %> ?</p>
+            <form method="post">
+              <input type="hidden" name="blogId" value="<%= blog.blogId %>" />
+              <button class="btn btn-primary" type="submit">Yes</button>
+              <a href="/admin/blogs" class="btn btn-danger">Cancel</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
