@@ -1,11 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=,, initial-scale=1.0" />
-    <title>Document</title>
+    <%- include('../partials/head') %>
   </head>
   <body>
-    Admin blog edit
+    <%- include('../partials/nav') %>
+
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <form action="" method="post">
+            <div class="row mb-3">
+              <label for="title" class="col-sm-2 col-form-label">Title</label>
+              <div class="col-sm-8">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  name="title"
+                  value="<%= blog.title %>"
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label for="description" class="col-sm-2 col-form-label"
+                >Description</label
+              >
+              <div class="col-sm-8">
+                <textarea name="description" class="form-control" rows="10">
+<%= blog.description %></textarea
+                >
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label for="img" class="col-sm-2 col-form-label">Image</label>
+              <div class="col-sm-8">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="img"
+                  name="img"
+                  value="<%= blog.img %>"
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label for="category" class="col-sm-2 col-form-label"
+                >Category</label
+              >
+              <div class="col-sm-8">
+                <select name="category" id="category" class="form-select">
+                  <option value="-1" selected>Choose</option>
+                  <% categories.forEach(category => { %>
+                  <option value="<%= category.categoryId %>">
+                    <%= category.name %>
+                  </option>
+                  <!-- <% if(category.categoryId == blog.categoryId) { %>
+                  <option value="<%= category.categoryId %>" selected>
+                    <%= category.name %>
+                  </option>
+                  <% } else { %>
+                  <option value="<%= category.categoryId %>">
+                    <%= category.name %>
+                  </option>
+                  <% } %> -->
+
+                  <% }) %>
+
+                  <!-- 2. yöntem-->
+                  <script>
+                    document.querySelector("#category").value =
+                      "<%= blog.categoryId %>";
+                  </script>
+                </select>
+              </div>
+            </div>
+
+            <!-- serverdan name propertysi ile ulasiyoruz-->
+            <div class="row mb-3">
+              <div class="col-sm-8 offset-sm-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="homepage"
+                  name="homepage" <%= blog.isHomepage?"checked":""%> />
+                  <label class="form-check-label" for="homepage">
+                    Homepage
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-sm-8 offset-sm-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="approval"
+                  name="approval" <%= blog.isApproved?"checked":""%> />
+                  <label class="form-check-label" for="approval">
+                    Approval
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-sm-8 offset-sm-2">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

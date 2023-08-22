@@ -27,7 +27,7 @@ router.use("/blogs/:blogId",async function(req,res){      //blogs/category de ka
    //console.log(id)
 
    try{
-      const [blogs, ] = await db.execute("select* from blog where blogId=?", [id]);
+      const [blogs, ] = await db.execute("select * from blog where blogId=?", [id]);
 
       const blog = blogs[0];
 
