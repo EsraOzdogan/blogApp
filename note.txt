@@ -274,3 +274,22 @@ tek parametre
 
     coklu parametre
      const [blog, ] = await db.execute("select* from blog where blogId=? and isHomepage=?", [id, ...])
+
+
+
+     --ADD BLOG WITH POST METHOD 
+
+     
+   if(req.method == "POST" ){
+      //kayit
+   }else{
+      //formu getir
+   }
+
+
+
+
+
+   router.post("/blog/create",async function(req,res){   
+   console.log(req.body)  //formda girilen data bilgilerini verir
+});
