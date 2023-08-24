@@ -22,7 +22,7 @@ router.post("/blog/delete/:blogId",async function(req,res){
    const blogId = req.body.blogId;
    try{
       await db.execute("delete from blog where blogId=?",[blogId]);
-      res.redirect("/admin/blogs")
+      res.redirect("/admin/blogs?action=delete")
    }catch(err){
       console.log(err);
    }
@@ -54,7 +54,7 @@ router.post("/blog/create",async function(req,res){
    try{
       await db.execute("INSERT INTO blog(title, description, img, isHomepage, isApproved, categoryId) VALUES (?,?,?,?,?,?)",          //db veri ekleme //sıra önemli ve dbdeki columnlar ile aynı olmali
       [title, description, img, isHomepage, isApproved, category]);
-      res.redirect("/admin/blogs")
+      res.redirect("/admin/blogs?action=create")
    }catch(err){
       console.log(err);
    }
@@ -95,7 +95,7 @@ router.get("/blogs/:blogId",async function(req,res){
    try{
       await db.execute("UPDATE blog SET title =?, description=?, img=?, isHomepage=?, isApproved=?, categoryId=? WHERE blogId=?",   //blog tablosunda sıralanan columnlari güncelle, hepsini güncelemek zorunda degilsins
       [title, description, img, isHomepage, isApproved, categoryId, blogId]);
-      res.redirect("/admin/blogs")
+      res.redirect("/admin/blogs?action=edit&blogId=" + blogId)
    }catch(err){
       console.log(err);
    }
@@ -106,7 +106,9 @@ router.get("/blogs",async function(req,res){
       const [blogs,] = await db.execute("select blogId, title, img from blog");        //sadece bu kolonlari gönderiyorum
       res.render("admin/blog-list", {
          title: "blog list",
-         blogs: blogs
+         blogs: blogs,
+         action: req.query.action,
+         blogId: req.query.blogId
       })
    }catch(err){
       console.log(err);
