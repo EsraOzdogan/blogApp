@@ -3,6 +3,8 @@ const router = express.Router();
 
 const db = require("../data/db");
 
+//blog
+
 router.get("/blog/delete/:blogId",async function(req,res){   
    const blogId = req.params.blogId;
    try{
@@ -109,6 +111,103 @@ router.get("/blogs",async function(req,res){
          blogs: blogs,
          action: req.query.action,
          blogId: req.query.blogId
+      })
+   }catch(err){
+      console.log(err);
+   }
+});
+
+//category
+
+router.get("/category/delete/:categoryId",async function(req,res){   
+   const categoryId = req.params.categoryId;
+   try{
+      const [categories, ] = await db.execute("select * from category where categoryId=?", [categoryId]);
+      const category = categories[0];
+
+      res.render( "admin/category-delete", {
+            title: "delete category",
+            category : category
+         });
+   }catch(err){
+      console.log(err)
+   }
+});
+
+router.post("/category/delete/:categoryId",async function(req,res){   
+   const categoryId = req.body.categoryId;
+   try{
+      await db.execute("delete from category where categoryId=?",[categoryId]);
+      res.redirect("/admin/categories?action=delete")
+   }catch(err){
+      console.log(err);
+   }
+});
+
+router.get("/category/create",async function(req,res){   
+   
+   try{
+      res.render( "admin/category-create", { 
+         title: 'add category'
+      });
+   }catch(err){
+      console.log(err)
+   }
+});
+
+router.post("/category/create",async function(req,res){   
+   const name = req.body.name;
+   try{
+      await db.execute("INSERT INTO category(name) VALUES (?)",  
+      [name]);
+      res.redirect("/admin/categories?action=create")
+   }catch(err){
+      console.log(err);
+   }
+});
+
+router.get("/categories/:categoryId",async function(req,res){    
+   const categoryId = req.params.categoryId;
+
+   try{
+      const [categories, ] = await db.execute("select * from category where categoryId=?",[categoryId]);
+
+      const category = categories[0];
+
+      if(category){                     
+         return res.render( "admin/category-edit", {
+            title: category.title,
+            category : category
+         });
+      }
+      
+      res.redirect("admin/categories")
+   }catch(err){
+      console.log(err)
+   }
+ });
+
+ router.post("/categories/:categoryId",async function(req,res){    
+   const categoryId = req.body.categoryId;
+   const name = req.body.name;
+
+   try{
+      await db.execute("UPDATE category SET name=? where categoryId=?",
+      [name,,categoryId]);
+      res.redirect("/admin/categories?action=edit&categoryId=" + categoryId)
+   }catch(err){
+      console.log(err);
+   }
+ });
+
+router.get("/categories",async function(req,res){    
+   try{
+      const [categories,] = await db.execute("select * from category");        //sadece bu kolonlari gönderiyorum
+      res.render("admin/category-list", {
+         title: "category list",
+         categories: categories,
+         action: req.query.action,
+         categoryId: req.query.categoryId
       })
    }catch(err){
       console.log(err);
