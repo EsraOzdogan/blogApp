@@ -20,6 +20,8 @@ EJS language support //Extension
 
 npm i mysql2@2.3.3
 
+npm i multer@1.4.5-lts.1 //for img upload
+
 ## RUN
 
 n̶o̶d̶e̶ ̶i̶n̶d̶e̶x̶.̶j̶s̶

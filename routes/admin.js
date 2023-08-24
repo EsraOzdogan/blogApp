@@ -44,16 +44,20 @@ router.get("/blog/create",async function(req,res){
    }
 });
 
-router.post("/blog/create",async function(req,res){   
+const multer = require("multer")
+const upload = multer({dest: "./public/images"})
+
+router.post("/blog/create", upload.single("img"), async function(req,res){        //htmlden id'den aldik img degerini
    console.log(req.body)  //formda girilen data bilgilerini verir        //req. ejsteki htmldeki name'ler
    const title = req.body.title;
    const description = req.body.description;
-   const img = req.body.img;
+   const img = req.file.filename;
    const category = req.body.category;
    const isHomepage = req.body.homepage == "on" ? 1:0;
    const isApproved = req.body.approval == "on" ? 1:0;
 
    try{
+      console.log(img)
       await db.execute("INSERT INTO blog(title, description, img, isHomepage, isApproved, categoryId) VALUES (?,?,?,?,?,?)",          //db veri ekleme //sıra önemli ve dbdeki columnlar ile aynı olmali
       [title, description, img, isHomepage, isApproved, category]);
       res.redirect("/admin/blogs?action=create")
