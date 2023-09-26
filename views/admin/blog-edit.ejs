@@ -9,9 +9,11 @@
     <div class="container mt-3">
       <div class="row">
         <div class="col-md-12 mt-3">
-          <form action="" method="post">
+          <form action="" method="post" enctype="multipart/form-data">
             <input type="hidden" name="blogId" value="<%= blog.blogId %>" />
             <!-- bu input hidden ile namede yakalanan blogId ile uppdate yapilir. html ve admin.js posttaki blogIdler eslesince degistirme yapiyor-->
+            <input type="hidden" name="img" value="<%= blog.image %>" />
+
             <div class="row mb-3">
               <label for="title" class="col-sm-2 col-form-label">Title</label>
               <div class="col-sm-8">
@@ -39,13 +41,8 @@
             <div class="row mb-3">
               <label for="img" class="col-sm-2 col-form-label">Image</label>
               <div class="col-sm-8">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="img"
-                  name="img"
-                  value="<%= blog.img %>"
-                />
+                <img src="/static/images/<%= blog.img %>" alt="" width="120" />
+                <input type="file" class="form-control" id="img" name="img" />
               </div>
             </div>
 

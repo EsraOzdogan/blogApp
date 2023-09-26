@@ -89,11 +89,15 @@ router.get("/blogs/:blogId",async function(req,res){
    }
  });
 
- router.post("/blogs/:blogId",async function(req,res){    
+ router.post("/blogs/:blogId", imageUpload.upload.single('img'), async function(req,res){    
    const blogId = req.body.blogId;
    const title = req.body.title;
    const description = req.body.description;
-   const img = req.body.img;
+   let img = req.body.img;
+
+   if(req.file){
+      img = req.file.filename;
+   }
    const categoryId = req.body.category;
    const isHomepage = req.body.homepage == "on" ? 1:0;
    const isApproved = req.body.approval == "on" ? 1:0;
