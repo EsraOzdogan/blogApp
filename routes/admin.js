@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const db = require("../data/db");
+const imageUpload = require("../helpers/image-upload");
 
 //blog
 
@@ -44,10 +45,9 @@ router.get("/blog/create",async function(req,res){
    }
 });
 
-const multer = require("multer")
-const upload = multer({dest: "./public/images"})
 
-router.post("/blog/create", upload.single("img"), async function(req,res){        //htmlden id'den aldik img degerini
+
+router.post("/blog/create", imageUpload.upload.single("img"), async function(req,res){        //htmlden id'den aldik img degerini
    console.log(req.body)  //formda girilen data bilgilerini verir        //req. ejsteki htmldeki name'ler
    const title = req.body.title;
    const description = req.body.description;
