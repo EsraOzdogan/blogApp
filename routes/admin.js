@@ -3,7 +3,7 @@ const router = express.Router();
 
 const db = require("../data/db");
 const imageUpload = require("../helpers/image-upload");
-
+const fs = require("fs");
 //blog
 
 router.get("/blog/delete/:blogId",async function(req,res){   
@@ -97,6 +97,10 @@ router.get("/blogs/:blogId",async function(req,res){
 
    if(req.file){
       img = req.file.filename;
+
+      fs.unlink("./public/images/"+ req.body.img, err =>{
+         console.log(err);
+      })
    }
    const categoryId = req.body.category;
    const isHomepage = req.body.homepage == "on" ? 1:0;
